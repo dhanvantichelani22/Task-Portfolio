@@ -1,5 +1,8 @@
 /* @import url('https://fonts.googleapis.com/css2?family=Cambo&family=Inter:wght@100;200;300;400;500;600;700;800;900&family=Merriweather:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Montserrat:wght@700&display=swap'); */
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400..900;1,400..900&display=swap');
+/* https://docs.google.com/document/d/1zi
+H1s1fIHfXJdvu67v53NgUr1arUnq5w9hdZOL8gKo4/edit */
+/* https://meet.google.com/kye-cvrn-wos */
 :root{
     --green: #33FF68;
     --goldenrod:#DAA520;
@@ -133,23 +136,6 @@ section{
   z-index:1000;
 }
 
-@media only screen and (max-width: 1000px) {
-  a{
-    font-size: 1rem;
-  }
-  .heading{
-     font-size: 1rem;
-  }
-  section{
-    min-height:50vh;
-  }
-  .parallax-about .info-box h2{
-    font-size: 1rem;
-  }
-  .parallax-about .info-box{
-    font-size: 10px;
-  }
-}
 .parallax-home img{
   width:100%;
   position: absolute;
@@ -203,12 +189,11 @@ section{
 .parallax-service{
   position: relative;
   z-index: 1000;
-  
   /* background: linear-gradient(90deg,#D2E2FB, #86A8DB); */
   background:url('./Service-Images/background.png') no-repeat;
   background-size: cover;
   background-position: center;
-  background-attachment: fixed;
+  /* background-attachment: fixed; */
 }
 .parallax-service img{
   width:100%;
@@ -266,7 +251,6 @@ section{
 } */
 .parallax-contact h2{
    font-size: 40px;
-
 }
 .parallax-contact input{
   padding: 10px;
@@ -311,6 +295,10 @@ section{
   border-radius: 15px;
   width: 25em;
 }
+.responsiveImage {
+  width: 100%;
+  height: auto;
+}
 input:hover{
   transform: translate(-7px);
 }  
@@ -342,4 +330,54 @@ input:hover{
   display: grid;
   place-items: center;
   font-size: 30px;
+}
+@media only screen and (max-width:500px) {
+  a{
+    font-size: 0.6rem;
+  }
+  .heading{
+     font-size: 0.6rem;
+  }
+  section{
+    min-height:32vh;
+  }
+  .parallax-service{
+    margin-top: 15px;
+
+  }
+  .parallax-about .info-box h2{
+    font-size: 0.5rem;
+  }
+  .parallax-about .info-box{
+    font-size: 5px;
+  }
+  .parallax-about img.about-waterfall{
+    top:-27px;
+  }
+  .parallax-service .info-service{
+    font-size: 8px;
+  }
+  .parallax-contact h2{
+    font-size: 20px;
+   margin-top:30px;
+ }
+ .parallax-contact input{
+  width:66%;
+ }
+
+ .parallax-contact .info-contact{
+  padding: 20px;
+  
+ }
+ .contact{
+  padding: 5px;
+ }
+ .parallax-contact .btn {
+  padding: 5px;
+  font-size: 15px;
+ }
+ .parallax-contact .contact{
+  padding: 10px;
+  width: 20em;
+ }
 }

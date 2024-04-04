@@ -14,11 +14,14 @@ const ServicePage = () => {
     const handleScroll = () => setscrollPos(window.scrollY);
 
     document.addEventListener('scroll', handleScroll);
-
+// Clean up the event listener when the component unmounts
     return () => {
       document.removeEventListener('scroll', handleScroll);
     };
   }, []);
+  console.log(window.scrollY); 
+
+  // Empty dependency array means this effect runs once on mount and clean up on unmount
 
   // let progressTop = document.getElementById("progress-top");
 //   const progressTop = useRef(null);
@@ -52,6 +55,38 @@ const ServicePage = () => {
 //     document.body.scrollTop = 0;
 //     document.documentElement.scrollTop = 0;
 //   }
+
+// Get window width
+const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+
+// Update window width when window is resized
+useEffect(() => {
+  const handleResize = () => setWindowWidth(window.innerWidth);
+  window.addEventListener('resize', handleResize);
+  return () => {
+    window.removeEventListener('resize', handleResize);
+  };
+}, []);
+
+// let multiplier = window.innerWidth <= 600 ? -0.05 : -0.1;
+
+// Calculate left position based on scroll position and window width(Gate left)
+let leftPos = scrollPos * 0.1;
+if (windowWidth < 600) {
+  leftPos = scrollPos * 0.05; // slower movement on small screens
+} else if (windowWidth < 900) {
+  leftPos = scrollPos * 0.08; // medium movement on medium screens
+}
+
+console.log(leftPos);
+
+//gateright
+let multiplier = -0.1; // default value for large screens
+if (windowWidth <= 600) {
+  multiplier = -0.05; // slower movement on small screens
+}
+// console.log(multiplier);
+
 
 let progressTop = ()=>{
   let scrollProgress = document.getElementById("progress");
@@ -88,9 +123,10 @@ let progressTop = ()=>{
       </div>
       <img src={treeLeft} alt="" id="tree-left" style={{left: scrollPos * -0.1}}/>
       <img src={treeRight} alt="" id='tree-right' style={{left: scrollPos * 0.1}}/>
-      <img src={gateLeft} alt="" id='gate-left' style={{left: scrollPos * 0.1, zIndex: 1}}/>
-<img src={gateRight} alt="" id='gate-right' style={{left: scrollPos * -0.1, zIndex: 1}}/>
-<img src={grass} alt="" id='grass'/>
+      {/* <img src={gateLeft} alt="" id='gate-left' style={{left: '200px'}}  /> */}
+      <img src={gateLeft} alt="" id='gate-left' style={{left: scrollPos * 0.1}}  /> 
+      <img src={gateRight} alt="" id='gate-right' style={{left: scrollPos * multiplier}}/>
+      <img src={grass} alt="" id='grass'/>
     </section>
     
 
